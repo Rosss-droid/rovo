@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Welcome - vulnerable{% endblock %}
+{% block content %}
+<h2>Benvenuto!</h2>
+<p>Il tuo browser si presenta cosi:</p>
+<div class="comment">
+    <strong>User-Agent:</strong> {{ user_agent }}
+</div>
+<p class="meta">
+    Questa pagina riflette l'header HTTP <code>User-Agent</code> nel template
+    senza sanitizzazione (Markup safe). Un attaccante che controlla l'header puo
+    iniettare JavaScript arbitrario.
+</p>
+{% endblock %}

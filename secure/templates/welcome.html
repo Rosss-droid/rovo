@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Welcome - secure{% endblock %}
+{% block content %}
+<h2>Benvenuto!</h2>
+<p>Il tuo browser si presenta cosi:</p>
+<div class="comment">
+    <strong>User-Agent:</strong> {{ user_agent }}
+</div>
+<p class="meta">
+    Lo User-Agent passa per <code>sanitize_user_agent()</code> e poi
+    viene reso da Jinja2 con autoescape attivo. Qualsiasi payload
+    HTML/JS viene mostrato come testo letterale.
+</p>
+{% endblock %}

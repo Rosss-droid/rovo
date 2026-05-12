@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>rovo - lab XSS (versione difesa)</h2>
+<p>Esplora gli stessi endpoint, ora protetti:</p>
+<ul>
+    <li><a href="{{ url_for('welcome') }}">/welcome</a> - User-Agent sanitizzato + autoescape</li>
+    <li><a href="{{ url_for('guestbook') }}">/guestbook</a> - commenti con output encoding + CSP</li>
+</ul>
+{% endblock %}

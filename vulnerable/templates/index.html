@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>rovo - lab XSS</h2>
+<p>Esplora gli endpoint vulnerabili:</p>
+<ul>
+    <li><a href="{{ url_for('welcome') }}">/welcome</a> - riflette l'header <code>User-Agent</code> (HTTP Header XSS, CAPEC-86)</li>
+    <li><a href="{{ url_for('guestbook') }}">/guestbook</a> - salva e mostra commenti (Stored XSS, CAPEC-592)</li>
+</ul>
+{% endblock %}
