@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}rovo - vulnerable{% endblock %}</title>
+    <style>
+        body { font-family: -apple-system, sans-serif; max-width: 760px; margin: 2em auto; padding: 0 1em; color: #222; }
+        header { background: #b00020; color: white; padding: 1em; border-radius: 6px; margin-bottom: 1em; }
+        header h1 { margin: 0; font-size: 1.2em; }
+        nav a { color: white; margin-right: 1em; text-decoration: underline; }
+        .comment { border: 1px solid #ddd; padding: 0.6em 1em; border-radius: 4px; margin: 0.5em 0; }
+        .meta { font-size: 0.8em; color: #666; }
+        input, textarea { width: 100%; padding: 0.4em; font-size: 1em; box-sizing: border-box; margin-bottom: 0.5em; }
+        button { background: #b00020; color: white; border: none; padding: 0.5em 1em; cursor: pointer; border-radius: 4px; }
+        .banner { background: #fff3cd; border: 1px solid #ffeeba; padding: 0.6em 1em; border-radius: 4px; margin-bottom: 1em; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>rovo - versione VULNERABILE</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('welcome') }}">Welcome</a>
+            <a href="{{ url_for('guestbook') }}">Guestbook</a>
+        </nav>
+    </header>
+    <div class="banner">Questa app contiene vulnerabilita XSS intenzionali. Uso didattico in ambiente isolato.</div>
+    {% block content %}{% endblock %}
+</body>
+</html>

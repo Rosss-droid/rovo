@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Guestbook - vulnerable{% endblock %}
+{% block content %}
+<h2>Guestbook</h2>
+<form method="POST">
+    <label>Nome
+        <input name="author" placeholder="Il tuo nome" required>
+    </label>
+    <label>Commento
+        <textarea name="body" rows="3" placeholder="Lascia un messaggio" required></textarea>
+    </label>
+    <button type="submit">Pubblica</button>
+</form>
+
+<form method="POST" action="{{ url_for('reset') }}" style="margin-top:0.5em;">
+    <button type="submit" style="background:#666;">Svuota guestbook</button>
+</form>
+
+<h3>Messaggi ({{ comments|length }})</h3>
+{% for c in comments %}
+    <div class="comment">
+        <div><strong>{{ c.author }}</strong> <span class="meta">- {{ c.created_at }}</span></div>
+        <div>{{ c.body }}</div>
+    </div>
+{% else %}
+    <p class="meta">Nessun messaggio.</p>
+{% endfor %}
+{% endblock %}

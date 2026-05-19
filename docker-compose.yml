@@ -1,0 +1,39 @@
+services:
+  vulnerable:
+    build: ./vulnerable
+    container_name: rovo-vulnerable
+    ports:
+      - "8080:5000"
+    volumes:
+      - vuln_data:/app/data
+    networks:
+      - lab
+
+  secure:
+    build: ./secure
+    container_name: rovo-secure
+    ports:
+      - "8081:5000"
+    volumes:
+      - secure_data:/app/data
+    networks:
+      - lab
+
+  attacker:
+    build: ./attacker
+    container_name: rovo-attacker
+    ports:
+      - "9000:6000"
+    volumes:
+      - attacker_data:/app/data
+    networks:
+      - lab
+
+networks:
+  lab:
+    driver: bridge
+
+volumes:
+  vuln_data:
+  secure_data:
+  attacker_data:

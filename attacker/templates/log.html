@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Attacker - cookie ricevuti</title>
+    <meta http-equiv="refresh" content="2">
+    <style>
+        body { font-family: ui-monospace, monospace; background: #111; color: #0f0; padding: 1em; }
+        h1 { color: #f33; }
+        .entry { border-left: 3px solid #0f0; padding-left: 1em; margin-bottom: 1em; }
+        .meta { color: #999; font-size: 0.85em; }
+        .key { color: #fc0; }
+        pre { white-space: pre-wrap; word-break: break-all; }
+    </style>
+</head>
+<body>
+    <h1>Server attaccante - cookie esfiltrati</h1>
+    <p class="meta">Auto-refresh ogni 2 secondi. Totale: {{ entries|length }}</p>
+    {% if not entries %}
+        <p>Nessun dato ricevuto ancora. Esegui un attacco contro l'app vulnerabile.</p>
+    {% endif %}
+    {% for e in entries %}
+    <div class="entry">
+        <div class="meta">{{ e.ts }} - da {{ e.ip }} via {{ e.method }}</div>
+        {% if e.args %}
+            <div><span class="key">args:</span></div>
+            <pre>{{ e.args|tojson(indent=2) }}</pre>
+        {% endif %}
+        {% if e.form %}
+            <div><span class="key">form:</span></div>
+            <pre>{{ e.form|tojson(indent=2) }}</pre>
+        {% endif %}
+        <div class="meta">UA: {{ e.ua }}</div>
+        <div class="meta">Referer: {{ e.referer }}</div>
+    </div>
+    {% endfor %}
+</body>
+</html>
