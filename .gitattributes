@@ -1,0 +1,22 @@
+# Forza LF (Unix line endings) per file di testo, indipendentemente
+# dal sistema operativo del client. Evita che git su Windows converta
+# i fine-riga in CRLF, cosa che rompe gli script bash interpretati
+# nei container Linux.
+
+* text=auto eol=lf
+
+*.sh        text eol=lf
+Dockerfile  text eol=lf
+*.py        text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
+*.md        text eol=lf
+*.html      text eol=lf
+*.txt       text eol=lf
+
+# File binari
+*.png       binary
+*.jpg       binary
+*.jpeg      binary
+*.gif       binary
+*.db        binary
